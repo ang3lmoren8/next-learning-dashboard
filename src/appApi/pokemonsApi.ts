@@ -12,10 +12,18 @@ export const getPokemons = (limit = 20, offset = 0): Promise<SimplePokemon[]> =>
       }))
     )
 
-export const getPokemonById = (id: string): Promise<PokemonDetail> =>
-  fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
-    // cache: 'force-cache',
-    next: { revalidate: 60 * 60 * 24 },
-  })
+export const getPokemonById = (
+  id: string,
+  requestInit?: RequestInit
+): Promise<PokemonDetail> =>
+  fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, requestInit)
+    .then((res) => res.json())
+    .catch(() => notFound())
+
+export const getPokemonByName = (
+  name: string,
+  requestInit?: RequestInit
+): Promise<PokemonDetail> =>
+  fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, requestInit)
     .then((res) => res.json())
     .catch(() => notFound())

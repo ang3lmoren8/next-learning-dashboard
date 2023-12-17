@@ -1,4 +1,4 @@
-import { getPokemons } from '@/api/pokemonsApi'
+import { getPokemons } from '@/appApi/pokemonsApi'
 import PokemonGrid from '@/components/pokemons/PokemonGrid/PokemonGrid'
 import { Metadata } from 'next'
 

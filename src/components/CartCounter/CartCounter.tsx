@@ -1,15 +1,30 @@
 'use client'
-import { useState } from 'react'
+import { useAppDispatch, useAppSelector } from '@/store/appStore.types'
+import { selectCounter } from '@/store/counter/counterSelectors'
+import {
+  decrement,
+  increment,
+  initCounter,
+} from '@/store/counter/counterSlice'
+import { useEffect } from 'react'
+import { getCounterDefaultValue } from '@/appApi/counterApi'
 
 const CartCounter = () => {
-  const [counter, setCounter] = useState(0)
+  const counter = useAppSelector(selectCounter)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    getCounterDefaultValue().then((res) => {
+      dispatch(initCounter(res.counter))
+    })
+  }, [dispatch])
 
   const add = () => {
-    setCounter((prev) => prev + 1)
+    dispatch(increment())
   }
 
   const subtract = () => {
-    setCounter((prev) => prev - 1)
+    dispatch(decrement())
   }
 
   return (

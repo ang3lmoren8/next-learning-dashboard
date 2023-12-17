@@ -3,9 +3,10 @@ import {
   IoBookOutline,
   IoBrowsersOutline,
   IoCalculatorOutline,
+  IoHeartOutline,
   IoLogoReact,
 } from 'react-icons/io5'
-import SidebarMenuItem from "@/components/SidebarMenuItem/SidebarMenuItem";
+import SidebarMenuItem from '@/components/Sidebar/SidebarMenuItem/SidebarMenuItem'
 
 const menuItems = [
   {
@@ -25,6 +26,12 @@ const menuItems = [
     icon: <IoBookOutline size={28} />,
     title: 'Pokemons',
     subtitle: 'Static Pokemons list',
+  },
+  {
+    path: '/dashboard/favorites',
+    icon: <IoHeartOutline size={28} />,
+    title: 'Pokemons',
+    subtitle: 'Global state',
   },
 ]
 
